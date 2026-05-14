@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Scan</title>
+
+<style>
+    body{
+        margin:0;
+        background:black;
+        color:#00ff00;
+        font-family:monospace;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        overflow:hidden;
+    }
+
+    .box{
+        text-align:center;
+        animation: flicker 1s infinite alternate;
+    }
+
+    h1{
+        font-size:3rem;
+        margin-bottom:20px;
+    }
+
+    p{
+        font-size:1.3rem;
+    }
+
+    .warning{
+        color:red;
+        font-size:1.5rem;
+        margin-top:20px;
+    }
+
+    @keyframes flicker{
+        from{opacity:0.9;}
+        to{opacity:1;}
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>⚠ DEVICE HACKED ⚠</h1>
+
+    <p>Scanning personal data...</p>
+    <p id="loading">0%</p>
+
+    <div class="warning" id="finalMsg" style="display:none;">
+        😂 Relax! You just got pranked 😂
+        <br><br>
+        Curiosity level: 100%
+    </div>
+</div>
+
+<script>
+let count = 0;
+
+const loading = document.getElementById("loading");
+const finalMsg = document.getElementById("finalMsg");
+
+const interval = setInterval(() => {
+    count++;
+
+    loading.innerText = count + "%";
+
+    if(count >= 100){
+        clearInterval(interval);
+
+        loading.style.display = "none";
+
+        finalMsg.style.display = "block";
+    }
+}, 40);
+</script>
+
+</body>
+</html>
